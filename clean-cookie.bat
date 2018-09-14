@@ -9,7 +9,7 @@ rem check rsq_path exist
 if not exist %rsq_path% (
 	echo WARN: rishiqing path not exist
 	pause
-    exit
+	exit
 )
 
 echo cleaning......
@@ -17,11 +17,11 @@ rem kill rishiqing.exe process
 tasklist /FI "IMAGENAME eq %rsq_exe_program%" 2>NUL | find /I /N "%rsq_exe_program%">NUL
 if "%ERRORLEVEL%"=="0" (
 	echo INFO: killing process %rsq_exe_program%
-    taskkill /IM %rsq_exe_program% /F
-    echo INFO: waiting 5 seconds for %rsq_exe_program% killed
-    timeout 5 > NUL
+	taskkill /IM %rsq_exe_program% /F
+	echo INFO: waiting 5 seconds for %rsq_exe_program% killed
+	timeout 5 > NUL
 ) else (
-    echo INFO: %rsq_exe_program% not found
+	echo INFO: %rsq_exe_program% not found
 )
 rem delete cookie file
 if exist %rsq_cookie_path% (
