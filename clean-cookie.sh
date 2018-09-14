@@ -1,5 +1,5 @@
 #!/bin/sh
-rsq_path=~/AppData/Roaming/rishiqing
+rsq_path="~/Library/Application Support/rishiqing"
 rsq_cookie_path=$rsq_path/Cookies
 rsq_cookie_journal_path=$rsq_path/Cookies-journal
 rsq_exe_program=rishiqing
@@ -17,8 +17,11 @@ echo cleaning......
 rsq_program_id=`ps -ef | grep ${rsq_exe_program} | grep -v grep | awk '{print $2}'`
 if [ "$rsq_program_id" != "" ]
 then
-  echo INFO: killing process pid $rsq_program_id
-  kill -9 $rsq_program_id
+  for pid in $rsq_program_id
+  do
+    echo INFO: killing process pid $pid
+    kill -9 $pid
+  done
   sleep 5
 fi
 
